@@ -10,4 +10,27 @@ angular.module('myApp.services', ['ngResource'])
 			}
 		);
 	}
-]);
+])
+
+.service('SelectedGifs', function(){
+	var data = [];
+	
+	return {
+		gifs:function(){
+			return data;
+		},
+		addGif:function(gifLink){
+			data.push(gifLink);
+		},
+		deleteGifByIndex:function(id){
+			data.splice(id, 1);
+		},
+		deleteGifByLink:function(gifLink){
+			var index = data.indexOf(gifLink);
+			if(index != -1)
+			{
+				data.splice(id, 1);
+			}
+		}
+	};
+});
