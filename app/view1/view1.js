@@ -9,29 +9,55 @@ angular.module('myApp.view1', ['ngRoute'])
   });
 }])
 
-.controller('View1Ctrl', ['$scope', 'CatGifs', 'SelectedGifs', function($scope, CatGifs, SelectedGifs) {
-	var gifs_to_keep = 5;
+.controller('View1Ctrl', ['$scope', '$location', 'CatGifs', 'SelectedGifs', function($scope, $location, CatGifs, SelectedGifs) {
+	//Initialize variables
+	$scope.num_gifs_to_keep = 5;
 	$scope.loading = true;
+	$scope.imgur_page = 0;
 	$scope.loadingStyle = {display: 'block'};
-	$scope.images = CatGifs.query(function(data) { $scope.loading = false; $scope.loadingStyle = {display: 'none'}; });
-	$scope.giflist = SelectedGifs.gifs();
+	$scope.unloadingStyle = {display: 'none'};
 	$scope.img_index = 0;
+	$scope.giflist = SelectedGifs.gifs();
+	
+	//Declare functions
+	$scope.getNextGifPage = function(){
+		CatGifs.query({page: $scope.imgur_page}, function(results){
+			$scope.loading = false;
+			$scope.loadingStyle = {display: 'none'};
+			$scope.unloadingStyle = {display: 'block'};
+			$scope.images = results.data; 
+		});
+		++$scope.imgur_page;
+		$scope.img_index = 0;
+	};
 	
 	$scope.nextImage = function() {
-		if($scope.img_index == $scope.images.data.length - 1)
+		if($scope.img_index == $scope.images.length - 1)
 		{
 			//fetch new images
+			$scope.getNextGifPage();
 		}
 		else
 		{
 			$scope.img_index++;
 		}
 		
-	}
+	};
 	
 	$scope.keepImage = function(imageUrl) {
 		SelectedGifs.addGif(imageUrl);
 		$scope.giflist = SelectedGifs.gifs();
-		$scope.nextImage();
+		if($scope.giflist.length == $scope.num_gifs_to_keep)
+		{
+			//Go to view 2
+			$location.path('/view2');
+		}
+		else
+		{
+			$scope.nextImage();
+		}
 	};
+	
+	//Now call any functions necessary to get things going
+	$scope.getNextGifPage();
 }]);
