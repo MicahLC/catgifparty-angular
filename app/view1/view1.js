@@ -15,11 +15,23 @@ angular.module('myApp.view1', ['ngRoute'])
 	$scope.loadingStyle = {display: 'block'};
 	$scope.images = CatGifs.query(function(data) { $scope.loading = false; $scope.loadingStyle = {display: 'none'}; });
 	$scope.giflist = SelectedGifs.gifs();
+	$scope.img_index = 0;
+	
+	$scope.nextImage = function() {
+		if($scope.img_index == $scope.images.data.length - 1)
+		{
+			//fetch new images
+		}
+		else
+		{
+			$scope.img_index++;
+		}
+		
+	}
 	
 	$scope.keepImage = function(imageUrl) {
-		console.log("keepImage has been called with "+imageUrl);
 		SelectedGifs.addGif(imageUrl);
-		console.log(SelectedGifs.gifs());
 		$scope.giflist = SelectedGifs.gifs();
+		$scope.nextImage();
 	};
 }]);

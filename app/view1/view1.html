@@ -1,6 +1,6 @@
 <div>Gifs: {{giflist}}</div>
 <div ng-style="loadingStyle">Loading images, please wait.</div>
-<div ng-repeat="image in images.data">
-	<p>{{image.title}}</p><img ng-src="{{image.link}}" />
-	<button type="button" ng-click="keepImage(image.link)">Keep</button><button type="button">Skip</button>
+<div>
+	<p>{{images.data[img_index].title}}</p><img ng-src="{{images.data[img_index].link}}" />
+	<button type="button" ng-click="keepImage(images.data[img_index].link)">Keep</button><button type="button" ng-click="nextImage()">Skip</button>
 </div>
