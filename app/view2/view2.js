@@ -9,6 +9,11 @@ angular.module('myApp.view2', ['ngRoute'])
   });
 }])
 
-.controller('View2Ctrl', ['$scope', 'SelectedGifs', function($scope, SelectedGifs) {
+.controller('View2Ctrl', ['$scope', '$location', 'SelectedGifs', function($scope, $location, SelectedGifs) {
 	$scope.giflist = SelectedGifs.gifs();
+	if($scope.giflist.length == 0)
+	{
+		//We have nothing, go back to view 1
+		$location.path('/view1');
+	}
 }]);

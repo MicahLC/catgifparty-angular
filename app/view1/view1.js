@@ -19,6 +19,8 @@ angular.module('myApp.view1', ['ngRoute'])
 	$scope.img_index = 0;
 	$scope.giflist = SelectedGifs.gifs();
 	
+	//TODO: figure out how to skip albums (check is_album), and deal with gifv/webm stuff instead of .gifs? Something about checking for 'h' right before '.gif'?!?!
+	
 	//Declare functions
 	$scope.getNextGifPage = function(){
 		CatGifs.query({page: $scope.imgur_page}, function(results){
@@ -39,9 +41,10 @@ angular.module('myApp.view1', ['ngRoute'])
 		}
 		else
 		{
-			$scope.img_index++;
+			++$scope.img_index;
 		}
-		
+		console.log($scope.images[$scope.img_index]);
+		console.log($scope.images[$scope.img_index].is_album);
 	};
 	
 	$scope.keepImage = function(imageUrl) {
