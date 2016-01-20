@@ -29,8 +29,11 @@ angular.module('myApp.services', ['ngResource'])
 			var index = data.indexOf(gifLink);
 			if(index != -1)
 			{
-				data.splice(id, 1);
+				data.splice(index, 1);
 			}
-		}
+		},
+        clearAll:function(){
+            data.splice(0, data.length);
+        }
 	};
 });
