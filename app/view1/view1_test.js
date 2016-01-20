@@ -4,6 +4,8 @@ describe('myApp.view1 module', function() {
 
   beforeEach(module('myApp.view1'));
   beforeEach(module('myApp.services'));
+  beforeEach(module('ngSanitize'));
+  beforeEach(module('com.2fdevs.videogular'));
 
   describe('view1 controller', function(){
     var scope, ctrl, $httpBackend;

@@ -6,7 +6,9 @@ angular.module('myApp', [
   'myApp.view1',
   'myApp.view2',
   'myApp.version',
-  'myApp.services'
+  'myApp.services',
+  'ngSanitize',
+  "com.2fdevs.videogular"
 ]).
 
 config(['$routeProvider', function($routeProvider) {

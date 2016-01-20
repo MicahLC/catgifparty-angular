@@ -2,5 +2,11 @@
 <div ng-style="unloadingStyle">
 	<p>You need to select {{num_gifs_to_keep - giflist.length}} more gif(s) to keep.</p>
 	<button type="button" class="button" ng-click="keepImage(images[img_index].link)">Keep</button><button type="button" class="button" ng-click="nextImage()">Skip</button>
-	<p>{{images[img_index].title}}</p><img ng-src="{{images[img_index].link}}" />
+	<p>{{images[img_index].title}}</p>
+    <div class="videogular-container">
+        <videogular vg-theme="videoconfig.theme.url" vg-auto-play="true" vg-loop="true">
+            <vg-media vg-src="videoconfig.sources" vg-native-controls="false">
+        </videogular>
+    </div>
+    <!--<img ng-src="{{images[img_index].link}}" />-->
 </div>

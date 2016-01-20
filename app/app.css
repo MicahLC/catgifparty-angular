@@ -57,3 +57,8 @@ a
 	display: inline-block;
 	margin: 20px 0px 0px 0px;
 }
+
+.videogular-container{
+    width: 800px;
+    height: 600px;
+}

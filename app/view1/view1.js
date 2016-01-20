@@ -1,6 +1,12 @@
 'use strict';
 
-angular.module('myApp.view1', ['ngRoute'])
+angular.module('myApp.view1', 
+    [
+        'ngRoute',
+        'ngSanitize',
+        'com.2fdevs.videogular'
+    ]
+)
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/view1', {
@@ -9,7 +15,7 @@ angular.module('myApp.view1', ['ngRoute'])
   });
 }])
 
-.controller('View1Ctrl', ['$scope', '$location', 'CatGifs', 'SelectedGifs', function($scope, $location, CatGifs, SelectedGifs) {
+.controller('View1Ctrl', ['$scope', '$location', 'CatGifs', 'SelectedGifs', '$sce', function($scope, $location, CatGifs, SelectedGifs, $sce) {
 	//Initialize variables
 	$scope.num_gifs_to_keep = 5;
 	$scope.loading = true;
@@ -18,8 +24,25 @@ angular.module('myApp.view1', ['ngRoute'])
 	$scope.unloadingStyle = {display: 'none'};
 	$scope.img_index = 0;
 	$scope.giflist = SelectedGifs.gifs();
-	
-	//TODO: figure out how to skip albums (check is_album), and deal with gifv/webm stuff instead of .gifs? Something about checking for 'h' right before '.gif'?!?!
+    
+    //Initialize the media configs
+    $scope.videoconfig = {
+        preload: "none",
+        /*sources: [ to be filled in later
+            {src: }
+        ],*/
+        theme: {
+					url: "http://www.videogular.com/styles/themes/default/latest/videogular.css"
+		}
+    };
+    
+    $scope.updateVideoSources = function(){
+        $scope.videoconfig.sources = 
+        [
+            {src: $sce.trustAsResourceUrl($scope.images[$scope.img_index].webm), type: "video/webm"},
+            {src: $sce.trustAsResourceUrl($scope.images[$scope.img_index].mp4), type: "video/mp4"}
+        ];
+    };
 	
 	//Declare functions
 	$scope.getNextGifPage = function(){
@@ -34,7 +57,7 @@ angular.module('myApp.view1', ['ngRoute'])
                 //Get rid of albums from the array.
                 if($scope.images[i].is_album)
                 {
-                    console.log("removed an album at index "+i);
+                    //console.log("removed an album at index "+i);
                     $scope.images.splice(i, 1);
                     --i;
                 }
@@ -45,7 +68,8 @@ angular.module('myApp.view1', ['ngRoute'])
                 }
             }
             
-            console.log($scope.images[$scope.img_index]);
+            //console.log($scope.images[$scope.img_index]);
+            $scope.updateVideoSources();
 		});
 		++$scope.imgur_page;
 		$scope.img_index = 0;
@@ -60,7 +84,8 @@ angular.module('myApp.view1', ['ngRoute'])
         else
         {
             ++$scope.img_index;
-            console.log($scope.images[$scope.img_index]);
+            //console.log($scope.images[$scope.img_index]);
+            $scope.updateVideoSources();
         }
 	};
 	
