@@ -8,7 +8,7 @@ html
 body
 {
     color:#eeee00;
-    background-color:#461111;
+    background-color:black;
 }
 
 img
@@ -38,8 +38,8 @@ a
 
 .button
 {
-	border-radius:5px;
-	color: #fffff;
+	border-radius: 5px;
+	color: #ffffff;
 	background-color: #008800;
 	display: inline-block;
 	font-size: 24px;
@@ -48,17 +48,69 @@ a
 	margin: 5px;
 }
 
-#fetchnewcat
-{
-}
-
 #disqus_container
 {
 	display: inline-block;
 	margin: 20px 0px 0px 0px;
+    width: 400px;
 }
 
-.videogular-container{
-    width: 800px;
-    height: 600px;
+.videogular-container
+{
+    width: 400px;
+    height: 300px;
+    display: inline-block;
 }
+
+.videogular-container-mini
+{
+    width: 200px;
+    height: 150px;
+    display: inline-block;
+}
+
+.page-container
+{
+    width:80%;
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: center;
+}
+
+.slide-anim-0,
+.slide-anim-1,
+.slide-anim-2,
+.slide-anim-3,
+.slide-anim-4
+{
+    position: relative;
+    -webkit-animation-name: box-slide; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 5s; /* Chrome, Safari, Opera */
+    -webkit-animation-iteration-count: infinite; /* Chrome, Safari, Opera */
+    animation-name: box-slide;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes box-slide {
+    0%   {left:0px; top:0px;}
+    25%  {left:-200px; top:0px;}
+    /*50%  {left:200px; top:0px;}*/
+    75%  {left:200px; top:0px;}
+    100% {left:0px; top:0px;}
+}
+
+/* Standard syntax */
+@keyframes box-slide {
+    0%   {left:0px; top:0px;}
+    25%  {left:-200px; top:0px;}
+    /*50%  {left:200px; top:0px;}*/
+    75%  {left:200px; top:0px;}
+    100% {left:0px; top:0px;}
+}
+
+.slide-anim-0 { animation-delay: 0;}
+.slide-anim-1 { animation-delay: 1s;}
+.slide-anim-2 { animation-delay: 2s;}
+.slide-anim-3 { animation-delay: 3s;}
+.slide-anim-4 { animation-delay: 4s;}

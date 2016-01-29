@@ -1,6 +1,6 @@
 <button type="button" class="button" ng-click="resetData()">Pick new gifs!</button>
 <div ng-repeat="gif in giflist">
-    <div class="videogular-container">
+    <div ng-class="'videogular-container-mini slide-anim-'+$index">
         <videogular vg-theme="theme" vg-auto-play="true" vg-loop="true">
             <vg-media vg-src="gif" vg-native-controls="false">
         </videogular>
