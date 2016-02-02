@@ -1,5 +1,5 @@
 # NOTE
-None of the following has been modified from the original README.md from the angular-seed project. Some of it may be out-of-date, wrong, or inconsequential. READ AT YOUR OWN RISK.
+None of the following has been modified from the original README.md from the angular-seed project. Some of it may be out-of-date, wrong, or inconsequential. READ AT YOUR OWN RISK. Currently in v1.0.
 # angular-seed — the seed for AngularJS apps
 
 This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
