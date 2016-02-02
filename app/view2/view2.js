@@ -9,7 +9,7 @@ angular.module('myApp.view2',
 )
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view2', {
+  $routeProvider.when('/view-gifs', {
     templateUrl: 'view2/view2.html',
     controller: 'View2Ctrl'
   });
@@ -20,13 +20,13 @@ angular.module('myApp.view2',
 	if($scope.giflist.length == 0)
 	{
 		//We have nothing, go back to view 1
-		$location.path('/view1');
+		$location.path('/choose-gifs');
 	}
     //Other initialization
     $scope.theme = {url: "http://www.videogular.com/styles/themes/default/latest/videogular.css"};
     
     $scope.resetData = function(){
         SelectedGifs.clearAll();
-        $location.path('/view1');
+        $location.path('/choose-gifs');
     };
 }]);

@@ -9,7 +9,7 @@ angular.module('myApp.view1',
 )
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {
+  $routeProvider.when('/choose-gifs', {
     templateUrl: 'view1/view1.html',
     controller: 'View1Ctrl'
   });
@@ -95,7 +95,7 @@ angular.module('myApp.view1',
 		if($scope.giflist.length == $scope.num_gifs_to_keep)
 		{
 			//Go to view 2
-			$location.path('/view2');
+			$location.path('/view-gifs');
 		}
 		else
 		{
