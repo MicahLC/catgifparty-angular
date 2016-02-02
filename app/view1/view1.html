@@ -4,7 +4,7 @@
     <p>On this page, you will select which cat gifs you want to keep. On the next page, you will get to see them do something wonderful.</p>
 	<p>You need to select {{num_gifs_to_keep - giflist.length}} more gif(s) to keep.</p>
 	<button type="button" class="button" ng-click="keepImage(videoconfig.sources)">Keep</button><button type="button" class="button" ng-click="nextImage()">Skip</button>
-	<p>{{images[img_index].title}}</p>
+	<p>Title from Imgur: <span class="imgur-title">{{images[img_index].title}}</span></p>
     <div class="videogular-container">
         <videogular vg-theme="videoconfig.theme.url" vg-auto-play="true" vg-loop="true">
             <vg-media vg-src="videoconfig.sources" vg-native-controls="false">

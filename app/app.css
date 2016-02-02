@@ -114,3 +114,7 @@ a
 .slide-anim-2 { animation-delay: 2s;}
 .slide-anim-3 { animation-delay: 3s;}
 .slide-anim-4 { animation-delay: 4s;}
+
+.imgur-title {
+    font-weight: bold;
+}
